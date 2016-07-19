@@ -22,12 +22,12 @@ $fiendSend = new FieldCommon();
 $form
 ->setField( $fieldName->setClass('my-class my-class2')->setLabel('Nome')->setOtherAttributes(['maxlength' => '200', 'style' => 'width: 300px;'])->renderField('input', 'name') )
 ->setField( $fieldEndereco->setClass('my-class')->setLabel('Endreço')->setOtherAttributes(['maxlength' => '200', 'style' => 'width: 300px;'])->renderField('input', 'endereco') )
-->setField( $fieldEmail->setClass('my-class')->setLabel('E-mail')->setOtherAttributes(['maxlength' => '200', 'style' => 'width: 300px;'])->renderField('email', 'email') )
+->setField( $fieldEmail->setClass('my-class')->setLabel('E-mail')->setOtherAttributes(['maxlength' => '200', 'style' => 'width: 300px;', 'required' => 'required'] )->renderField('email', 'email') )
 ->setField( $fieldGenero->setClass('my-select-class')->setLabel('Gênero')->setOptions(['m' => 'Masculino', 'f' => 'Feminino'])->setOtherAttributes(['style' => 'width: 200px;'])->renderField('select', 'genero') )
 ->setField( $fieldTipos->setClass('my-checkbox-class')->setLabel('Tipos')->setOptions(['t1' => 'Tipo 1', 't2' => 'Tipo 2', 't3' => 'Tipo 3'])->renderField('checkbox', 'tipos') )
 ->setField( $fieldCor->setClass('my-radio-class')->setLabel('Qual sua cor predileta?')->setOptions(['azul' => 'Azul', 'verde' => 'Verde', 'vermelho' => 'Vermelho'])->renderField('radio', 'cor-predileta') )
 ->setField( $fieldNewsletter->setClass('my-news-class')->setLabel('Deseja receber nossa newsletter?')->renderField('checkbox', 'newsletter') )
-->setField( $fiendSend->setClass('btn-class')->setValue('Enviar')->renderField('button', 'sendButton') );
+->setField( $fiendSend->setClass('btn-class')->setValue('Enviar')->renderField('submit', 'sendButton') );
 
 //------------------------------------------------------------------------------------------------------------
 ?>
