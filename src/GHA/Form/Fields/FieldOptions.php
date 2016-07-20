@@ -85,6 +85,7 @@ class FieldOptions implements FieldInterface {
     
     //------------------------------------------------------------------------------------------------------------    
     public function renderField( $type, $name ) {
+        $rendered = '';
         $this->setType($type);
         $this->setName($name);
         
@@ -127,6 +128,7 @@ class FieldOptions implements FieldInterface {
     
     //------------------------------------------------------------------------------------------------------------    
     private function generateParamsString($params) {
+        $paramsString = '';
         foreach ($params as $key=>$param) {
             if(!is_array($param)) {
                 $paramsString .= $key.'="'.$param.'" ';
