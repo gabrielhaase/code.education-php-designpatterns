@@ -61,7 +61,7 @@ $fieldTipos = new FieldOptions();
 $fieldCor = new FieldOptions();
 
 $form3
-->setField( $fieldTipos->setClass('my-radio-class')->setLabel('Quais os tipos escolhidos?')->setOptions(['1' => 'Tipo 1', '2' => 'Tipo2', '3' => 'Tipo 3'])->createField('checkbox', 'preferencia') )
+->setField( $fieldTipos->setClass('my-radio-class')->setLabel('Quais os tipos escolhidos?')->setOptions(['1' => 'Tipo 1', '2' => 'Tipo 2', '3' => 'Tipo 3'])->createField('checkbox', 'preferencia') )
 ->setField( $fieldSend->setClass('btn-class')->setValue('Salvar')->createField('submit', 'sendButton') );
 
 //------------------------------------------------------------------------------------------------------------
