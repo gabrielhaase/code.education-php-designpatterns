@@ -3,16 +3,23 @@
 namespace GHA\Form;
 
 use GHA\Form\Interfaces\FormInterface;
+use GHA\Form\Validator;
 
 //------------------------------------------------------------------------
 class Form implements FormInterface {
-	
 	//------------------------------------------------------------------------
     private $name;
     private $id;
     private $action;
     private $method;
     private $fields = [];
+    private $validator;
+    
+    //------------------------------------------------------------------------
+    public function __construct(Validator $validator)
+    {
+        $this->validator = $validator;
+    }    
     
 	//------------------------------------------------------------------------
 	public function getName(){
@@ -63,11 +70,17 @@ class Form implements FormInterface {
 	
 	//------------------------------------------------------------------------
     public function render( $name, $action, $method ) {
-    	$formString = "<form name=\"{$name}\" method=\"{$method}\" action=\"{$action}\">";
-    	foreach ($this->fields as $field) {
-    		$formString .= $field."<br />";
-    	}
-    	$formString .= "</form>";
+    	$formString = "
+    	<form name=\"{$name}\" method=\"{$method}\" action=\"{$action}\">
+    		<fieldset>
+    			<ul>";
+			    	foreach ($this->fields as $field) {
+			    		$formString .= "<li>".$field."</li><br />";
+			    	}
+		$formString .= "
+				</ul>
+    		</fieldset>
+    	</form>";
     	return $formString;
     }
     

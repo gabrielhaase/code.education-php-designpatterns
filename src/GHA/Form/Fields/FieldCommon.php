@@ -82,7 +82,7 @@ class FieldCommon implements FieldInterface {
 	}    
     
     //------------------------------------------------------------------------------------------------------------    
-    public function renderField( $type, $name ) {
+    public function createField( $type, $name ) {
     	$rendered = '';
         $this->setType($type);
         $this->setName($name);
