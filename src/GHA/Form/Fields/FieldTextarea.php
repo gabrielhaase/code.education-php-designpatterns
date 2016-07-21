@@ -6,14 +6,12 @@ namespace GHA\Form\Fields;
 use GHA\Form\Interfaces\FieldInterface;
 
 //------------------------------------------------------------------------------------------------------------
-class FieldOptions implements FieldInterface {
+class FieldTextarea implements FieldInterface {
     
-    private $type;
-    private $name;
     private $label;
     private $id;
     private $class;
-    private $options;
+    private $value;
     private $otherAttributes;
 
     public function __construct(){
@@ -65,12 +63,12 @@ class FieldOptions implements FieldInterface {
 		return $this;
 	}
 
-	public function getOptions(){
-		return $this->options;
+	public function getValue(){
+		return $this->value;
 	}
 
-	public function setOptions($options){
-		$this->options = $options;
+	public function setValue($value){
+		$this->value = $value;
 		return $this;
 	}
 
@@ -85,7 +83,7 @@ class FieldOptions implements FieldInterface {
     
     //------------------------------------------------------------------------------------------------------------    
     public function createField( $type, $name ) {
-        $rendered = '';
+    	$rendered = '';
         $this->setType($type);
         $this->setName($name);
         
@@ -98,39 +96,16 @@ class FieldOptions implements FieldInterface {
         
         $paramsString = $this->generateParamsString($params);
         if( !empty($this->label) ) $rendered .= "<label for=\"{$this->name}\">{$this->label}</label>\n";
-        
-        switch($this->type) {
-            case 'select' :
-                $rendered .= "<select {$paramsString}>\n";
-                $rendered .= "<option value=\"\">Selecione uma opção</option>\n";
-                
-                if(  !empty($this->options) ) {
-                    foreach($this->options as $key=>$option){
-                        $rendered .= "<option value=\"{$key}\"> {$option}</option>\n";
-                    }
-                }
-                
-                $rendered .= "</select>\n";
-            break;
-            
-            case 'checkbox':
-            case 'radio':
-                if(  !empty($this->options) ) {
-                    $rendered .= "<ul>";
-                    foreach($this->options as $key=>$option){
-                        $rendered .= "<li><input {$paramsString} value=\"{$key}\"/> {$option}</li>";
-                    }
-                    $rendered .= "</ul>";
-                }
-            break;  
-        }
+        $rendered .= "<textarea {$paramsString} />";
+        $rendered .= $this->value;
+        $rendered .= "</textarea>";
         
         return $rendered;
     }
     
     //------------------------------------------------------------------------------------------------------------    
     private function generateParamsString($params) {
-        $paramsString = '';
+    	$paramsString = '';
         foreach ($params as $key=>$param) {
             if(!is_array($param)) {
                 $paramsString .= $key.'="'.$param.'" ';
