@@ -20,6 +20,7 @@ $fieldName = new FieldCommon();
 $fieldEmail = new FieldCommon();
 $fieldTelefone = new FieldCommon();
 $fieldGenero = new FieldOptions();
+$fieldDescricao = new FieldTextarea();
 $fieldNewsletter = new FieldCommon();
 $fieldSend = new FieldCommon();
 
@@ -28,6 +29,7 @@ $form1
 ->setField( $fieldEmail->setClass('my-class')->setLabel('E-mail')->setOtherAttributes(['maxlength' => '200', 'style' => 'width: 300px;', 'required' => 'required'] )->createField('email', 'email') )
 ->setField( $fieldTelefone->setClass('my-class')->setLabel('Telefone')->setOtherAttributes(['maxlength' => '200', 'style' => 'width: 300px;'] )->createField('input', 'telefone') )
 ->setField( $fieldGenero->setClass('my-select-class')->setLabel('Gênero')->setOptions(['m' => 'Masculino', 'f' => 'Feminino'])->setOtherAttributes(['style' => 'width: 200px;'])->createField('select', 'genero') )
+->setField( $fieldDescricao->setClass('my-class')->setLabel('Descrição')->setOtherAttributes(['style' => 'width: 300px;'] )->createField('textarea', 'descricao') )
 ->setField( $fieldNewsletter->setClass('my-news-class')->setLabel('Deseja receber nossa newsletter?')->createField('checkbox', 'newsletter') )
 ->setField( $fieldSend->setClass('btn-class')->setValue('Salvar')->createField('submit', 'sendButton') );
 
